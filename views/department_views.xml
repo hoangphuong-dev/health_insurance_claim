@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form wizard tạo khoa BHYT -->
+    <record id="view_department_wizard_form" model="ir.ui.view">
+        <field name="name">hic.department.wizard.form</field>
+        <field name="model">hic.department.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Tạo khoa BHYT mới">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="bhyt_name" 
+                                   placeholder="Nhập tên khoa BHYT..."
+                                   required="1"/>
+                        </h1>
+                    </div>
+                    
+                    <group>
+                        <group>
+                            <field name="bhyt_code" 
+                                   placeholder="VD: K001"
+                                   required="1"/>
+                        </group>
+                        <group>
+                            <!-- Empty for layout -->
+                        </group>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Ánh xạ khoa HIS" name="mapping">
+                            <field name="his_department_ids" 
+                                   widget="many2many_tags"
+                                   options="{'no_create': True, 'no_open': True}"
+                                   domain="[('department_source', '=', 'his')]"/>
+                            
+                            <div class="alert alert-info mt-3" role="alert">
+                                <i class="fa fa-info-circle"/> 
+                                <strong>Hướng dẫn:</strong> Chọn các khoa HIS tương ứng để ánh xạ dữ liệu. 
+                                Bạn có thể chọn nhiều khoa HIS cho một khoa BHYT.
+                            </div>
+                        </page>
+                        
+                        <page string="Ghi chú" name="notes">
+                            <field name="description" 
+                                   placeholder="Ghi chú thêm về khoa này..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                
+                <footer>
+                    <button name="action_create_department" 
+                            type="object" 
+                            string="Tạo khoa BHYT" 
+                            class="btn-primary"/>
+                    <button string="Hủy" 
+                            class="btn-secondary" 
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Search view cho khoa BHYT -->
+    <record id="view_department_bhyt_search" model="ir.ui.view">
+        <field name="name">hr.department.bhyt.search</field>
+        <field name="model">hr.department</field>
+        <field name="arch" type="xml">
+            <search string="Tìm kiếm khoa BHYT">
+                <field name="bhyt_code" string="Mã BHYT"/>
+                <field name="bhyt_name" string="Tên khoa"/>
+                <field name="his_department_ids" string="Khoa HIS"/>
+                
+                <filter string="Đang hoạt động" 
+                        name="active" 
+                        domain="[('active', '=', True)]"/>
+                <filter string="Đã ánh xạ HIS" 
+                        name="mapped" 
+                        domain="[('mapped_count', '>', 0)]"/>
+                <filter string="Chưa ánh xạ" 
+                        name="not_mapped" 
+                        domain="[('mapped_count', '=', 0)]"/>
+                
+                <group expand="0" string="Nhóm theo">
+                    <filter string="Trạng thái" 
+                            name="group_active" 
+                            context="{'group_by': 'active'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Search view cho khoa HIS -->
+    <record id="view_department_his_search" model="ir.ui.view">
+        <field name="name">hr.department.his.search</field>
+        <field name="model">hr.department</field>
+        <field name="arch" type="xml">
+            <search string="Tìm kiếm khoa HIS">
+                <field name="his_code" string="Mã HIS"/>
+                <field name="name" string="Tên khoa"/>
+                <field name="bhyt_department_ids" string="Khoa BHYT"/>
+                
+                <filter string="Đã ánh xạ BHYT" 
+                        name="mapped" 
+                        domain="[('mapped_count', '>', 0)]"/>
+                <filter string="Chưa ánh xạ" 
+                        name="not_mapped" 
+                        domain="[('mapped_count', '=', 0)]"/>
+            </search>
+        </field>
+    </record>
+    
+    <!-- Action mở wizard -->
+    <record id="action_create_bhyt_department" model="ir.actions.act_window">
+        <field name="name">Tạo khoa BHYT mới</field>
+        <field name="res_model">hic.department.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_department_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+    
+    <!-- Server Actions cho buttons trong Action menu -->
+    <record id="action_sync_his_departments" model="ir.actions.server">
+        <field name="name">Đồng bộ từ HIS</field>
+        <field name="model_id" ref="model_hr_department"/>
+        <field name="binding_model_id" ref="model_hr_department"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">action = model.action_sync_from_his()</field>
+    </record>
+    
+    <record id="action_create_bhyt_dept_server" model="ir.actions.server">
+        <field name="name">Tạo khoa BHYT</field>
+        <field name="model_id" ref="model_hr_department"/>
+        <field name="binding_model_id" ref="model_hr_department"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+action = {
+    'type': 'ir.actions.act_window',
+    'name': 'Tạo khoa BHYT mới',
+    'res_model': 'hic.department.wizard',
+    'view_mode': 'form',
+    'target': 'new',
+}
+        </field>
+    </record>
+    
+    <!-- List view cho khoa BHYT - BỎ HEADER -->
+    <record id="view_department_bhyt_list" model="ir.ui.view">
+        <field name="name">hr.department.bhyt.list</field>
+        <field name="model">hr.department</field>
+        <field name="arch" type="xml">
+            <list string="Khoa phòng BHYT" create="false" edit="false" 
+                  multi_edit="1" sample="1">
+                <field name="bhyt_code" string="Mã BHYT"/>
+                <field name="bhyt_name" string="Tên khoa BHYT"/>
+                <field name="mapped_count" string="Khoa HIS đã ánh xạ"/>
+                <field name="active" widget="boolean_toggle"/>
+                
+                <button name="action_view_mappings" type="object" 
+                        icon="fa-link" title="Xem khoa HIS được ánh xạ"
+                        invisible="mapped_count == 0"/>
+            </list>
+        </field>
+    </record>
+    
+    <!-- List view cho khoa HIS - BỎ HEADER -->
+    <record id="view_department_his_list" model="ir.ui.view">
+        <field name="name">hr.department.his.list</field>
+        <field name="model">hr.department</field>
+        <field name="arch" type="xml">
+            <list string="Khoa phòng HIS" create="false" edit="false" 
+                  delete="false" sample="1">
+                <field name="his_code" string="Mã HIS"/>
+                <field name="name" string="Tên khoa HIS"/>
+                <field name="mapped_count" string="Khoa BHYT tương ứng"/>
+                
+                <button name="action_view_mappings" type="object"
+                        icon="fa-link" title="Xem khoa BHYT tương ứng"
+                        invisible="mapped_count == 0"/>
+            </list>
+        </field>
+    </record>
+    
+    <!-- Actions cho list views -->
+    <record id="action_department_bhyt" model="ir.actions.act_window">
+        <field name="name">Khoa phòng BHYT</field>
+        <field name="res_model">hr.department</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_department_bhyt_list"/>
+        <field name="search_view_id" ref="view_department_bhyt_search"/>
+        <field name="domain">[('department_source', '=', 'bhyt')]</field>
+        <field name="context">{
+            'default_department_source': 'bhyt',
+            'search_default_active': 1
+        }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Chưa có khoa phòng BHYT nào!
+            </p>
+            <p>
+                Khoa phòng BHYT được sử dụng để phân loại dịch vụ y tế trong hồ sơ giám định.<br/>
+                Mỗi khoa BHYT có thể ánh xạ với nhiều khoa từ hệ thống HIS.
+            </p>
+        </field>
+    </record>
+    
+    <record id="action_department_his" model="ir.actions.act_window">
+        <field name="name">Khoa phòng HIS</field>
+        <field name="res_model">hr.department</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_department_his_list"/>
+        <field name="search_view_id" ref="view_department_his_search"/>
+        <field name="domain">[('department_source', '=', 'his')]</field>
+        <field name="context">{
+            'create': False, 
+            'edit': False, 
+            'delete': False
+        }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Chưa có dữ liệu khoa phòng từ HIS!
+            </p>
+            <p>
+                Dữ liệu khoa phòng HIS được đồng bộ tự động từ hệ thống bệnh viện.<br/>
+                Sử dụng <strong>Action menu</strong> để đồng bộ dữ liệu mới nhất.
+            </p>
+        </field>
+    </record>
+    
+</odoo>
