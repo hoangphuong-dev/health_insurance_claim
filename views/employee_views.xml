@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Inherit Employee Form View để thêm medical staff fields -->
+    <record id="view_employee_form_medical_staff" model="ir.ui.view">
+        <field name="name">hr.employee.form.medical.staff</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form" />
+        <field name="arch" type="xml">
+            <!-- Thêm Medical Staff tab -->
+            <xpath expr="//notebook" position="inside">
+                <page string="Medical Staff Info">
+                    <group>
+                        <group string="HIS Information">
+                            <field name="his_code" />
+                        </group>
+                        <group string="Insurance Information">
+                            <field name="bhyt_code" />
+                        </group>
+                    </group>
+
+                    <group string="Practice Certificate">
+                        <group>
+                            <field name="bhyt_certificate_code" />
+                            <field name="bhyt_certificate_date" />
+                        </group>
+                        <group>
+                            <field name="bhyt_certificate_place" />
+                        </group>
+                    </group>
+
+                    <group string="Professional Information">
+                        <group>
+                            <field
+                                name="bhyt_title_id"
+                                options="{'no_create': True, 'no_create_edit': True}"
+                            />
+                        </group>
+                        <group>
+                            <field
+                                name="bhyt_service_id"
+                                options="{'no_create': True, 'no_create_edit': True}"
+                            />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Medical Staff List View -->
+    <record id="view_medical_staff_list" model="ir.ui.view">
+        <field name="name">hr.employee.medical.staff.list</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <list string="Medical Staff List" create="1" edit="1" delete="1">
+                <field name="name" />
+                <field name="department_id" />
+                <field name="his_code" />
+                <field name="bhyt_code" />
+                <field name="bhyt_certificate_code" />
+                <field name="bhyt_title_id" />
+                <field name="bhyt_service_id" />
+            </list>
+        </field>
+    </record>
+
+    <!-- Search View for Medical Staff -->
+    <record id="view_medical_staff_search" model="ir.ui.view">
+        <field name="name">hr.employee.medical.staff.search</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <search string="Search Medical Staff">
+                <field name="name" />
+                <field name="his_code" />
+                <field name="bhyt_code" />
+                <field name="bhyt_certificate_code" />
+                <field name="department_id" />
+                <field name="bhyt_title_id" />
+                <field name="bhyt_service_id" />
+
+                <!-- Filters -->
+                <filter
+                    name="has_certificate"
+                    string="Has Certificate"
+                    domain="[('bhyt_certificate_code', '!=', False)]"
+                />
+                <filter
+                    name="has_his_code"
+                    string="Has HIS Code"
+                    domain="[('his_code', '!=', False)]"
+                />
+
+                <!-- Group By -->
+                <group expand="0" string="Group By">
+                    <filter
+                        name="group_by_department"
+                        string="Department"
+                        context="{'group_by': 'department_id'}"
+                    />
+                    <filter
+                        name="group_by_professional_title"
+                        string="Professional Title"
+                        context="{'group_by': 'bhyt_title_id'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_medical_staff" model="ir.actions.act_window">
+        <field name="name">Medical Staff</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_medical_staff_list" />
+        <field name="search_view_id" ref="view_medical_staff_search" />
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first medical staff member!
+            </p>
+        </field>
+    </record>
+</odoo>

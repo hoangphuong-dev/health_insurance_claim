@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_benefit_code_form" model="ir.ui.view">
+        <field name="name">hic.benefit.code.form</field>
+        <field name="model">hic.benefit.code</field>
+        <field name="arch" type="xml">
+            <form string="Health Insurance Benefit Code">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="benefit_code" />
+                        </group>
+                        <group>
+                            <field name="benefit_rate" />
+                        </group>
+                    </group>
+                    <group string="Options">
+                        <div>
+                            <field name="is_payment_condition_applied" />
+                            <label
+                                for="is_payment_condition_applied"
+                                string="Apply Payment Conditions"
+                            />
+                            <br />
+                            <field name="is_transport_cost_covered" />
+                            <label
+                                for="is_transport_cost_covered"
+                                string="Transportation Cost Covered"
+                            />
+                            <br />
+                            <field name="is_non_bhyt_cost_paid" />
+                            <label
+                                for="is_non_bhyt_cost_paid"
+                                string="Out of Scope BHYT Costs Covered"
+                            />
+                        </div>
+                        <field name="active" invisible="1" />
+                    </group>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <!-- List View -->
+    <record id="view_benefit_code_list" model="ir.ui.view">
+        <field name="name">hic.benefit.code.list</field>
+        <field name="model">hic.benefit.code</field>
+        <field name="arch" type="xml">
+            <list string="Health Insurance Benefit Code List">
+                <field name="benefit_code" width="10%" />
+                <field name="benefit_rate" width="10%" />
+                <field name="is_payment_condition_applied" width="20%" />
+                <field name="is_transport_cost_covered" width="20%" />
+                <field name="is_non_bhyt_cost_paid" width="20%" />
+                <field name="create_uid" width="20%" />
+            </list>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_benefit_code_search" model="ir.ui.view">
+        <field name="name">hic.benefit.code.search</field>
+        <field name="model">hic.benefit.code</field>
+        <field name="arch" type="xml">
+            <search string="Search Health Insurance Benefit Code">
+                <field name="benefit_code" />
+                <field name="benefit_rate" />
+                <field name="create_uid" />
+                <separator />
+                <group expand="0" string="Group By">
+                    <filter
+                        string="Benefit Rate"
+                        name="group_benefit_rate"
+                        context="{'group_by': 'benefit_rate'}"
+                    />
+                    <filter
+                        string="Created By"
+                        name="group_creator"
+                        context="{'group_by': 'create_uid'}"
+                    />
+                    <filter
+                        string="Created Date"
+                        name="group_create_date"
+                        context="{'group_by': 'create_date:month'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_benefit_code" model="ir.actions.act_window">
+        <field name="name">Health Insurance Benefit Code</field>
+        <field name="res_model">hic.benefit.code</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first health insurance benefit code
+            </p>
+            <p>
+                Health insurance benefit codes define the coverage rates and conditions
+                for different types of health insurance benefits.
+            </p>
+        </field>
+    </record>
+</odoo>

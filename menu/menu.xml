@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Hide HIS Main Menu and sub menus -->
+    <menuitem id="his.menu_his" active="False" />
+    <menuitem id="his.action_menu_working_schedule" active="False" />
+    <menuitem id="his.main_menu_treatment" active="False" />
+    <menuitem id="his.main_menu_appointment" active="False" />
+    <menuitem id="his.main_menu_prescription" active="False" />
+    <menuitem id="his_base.main_menu_patient" active="False" />
+    <menuitem id="his_base.main_menu_physician" active="False" />
+    <menuitem id="his_base.clinic_services_root" active="False" />
+    <menuitem id="his_base.clinic_medicine_root" active="False" />
+
+    <!--Hide Base Menu-->
+    <menuitem id="mail.menu_root_discuss" active="False" />
+    <menuitem id="calendar.mail_menu_calendar" active="False" />
+    <menuitem
+        id="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"
+        active="False"
+    />
+    <menuitem id="account.menu_finance" active="False" />
+    <menuitem id="website.menu_website_configuration" active="False" />
+    <menuitem id="stock.menu_stock_root" active="False" />
+    <menuitem id="hr.menu_hr_root" active="False" />
+    <menuitem id="utm.menu_link_tracker_root" active="False" />
+
+    <!--HIC menu-->
+    <menuitem id="menu_hic_root" name="Health Insurance Claim" sequence="260" />
+
+    <!--Category and Configuration-->
+    <menuitem
+        id="menu_hic_category"
+        name="Category"
+        parent="menu_hic_root"
+        sequence="1"
+    />
+    <menuitem
+        id="menu_configuration"
+        name="Configuration"
+        parent="menu_hic_root"
+        sequence="2"
+    />
+
+    <menuitem
+        id="menu_reference_level"
+        name="Reference Level"
+        parent="menu_configuration"
+        action="action_reference_level"
+        sequence="10"
+    />
+    <menuitem
+        id="menu_hic_benefit_code"
+        name="Health Insurance Benefit Code"
+        parent="menu_configuration"
+        action="action_benefit_code"
+        sequence="15"
+    />
+
+    <menuitem
+        id="menu_hic_professional_title"
+        name="Professional Title"
+        parent="menu_configuration"
+        action="action_professional_title"
+        sequence="20"
+    />
+
+    <menuitem
+        id="menu_hic_medical_service_code"
+        name="Medical Service Code"
+        parent="menu_configuration"
+        action="action_medical_service_code"
+        sequence="25"
+    />
+    <menuitem
+        id="menu_bhyt_object_code"
+        name="BHYT Object Code"
+        parent="menu_configuration"
+        action="action_bhyt_object_code"
+        sequence="20"
+    />
+    <menuitem
+        id="menu_kcb_object_code"
+        name="KCB Object Code"
+        parent="menu_configuration"
+        action="action_kcb_object_code"
+        sequence="25"
+    />
+    <menuitem
+        id="menu_discharge_type_code"
+        name="Discharge Type Code"
+        parent="menu_configuration"
+        action="action_discharge_type_code"
+        sequence="30"
+    />
+    <menuitem
+        id="menu_accident_code"
+        name="Accident Code"
+        parent="menu_configuration"
+        action="action_accident_code"
+        sequence="35"
+    />
+    <!-- Department Submenu -->
+    <menuitem
+        id="menu_department"
+        name="Departments"
+        parent="menu_hic_category"
+        sequence="10"
+    />
+
+    <menuitem
+        id="menu_department_bhyt"
+        name="BHYT Departments"
+        parent="menu_department"
+        action="action_department_bhyt"
+        sequence="10"
+    />
+
+    <menuitem
+        id="menu_department_his"
+        name="HIS Departments"
+        parent="menu_department"
+        action="action_department_his"
+        sequence="20"
+    />
+
+    <!-- Hospital Bed Submenu -->
+    <menuitem
+        id="menu_hospital_bed"
+        name="Hospital Beds"
+        parent="menu_hic_category"
+        sequence="20"
+    />
+
+    <menuitem
+        id="menu_hospital_bed_bhyt"
+        name="BHYT Hospital Beds"
+        parent="menu_hospital_bed"
+        action="action_hospital_bed_bhyt"
+        sequence="10"
+    />
+
+    <menuitem
+        id="menu_hospital_bed_his"
+        name="HIS Hospital Beds"
+        parent="menu_hospital_bed"
+        action="action_hospital_bed_his"
+        sequence="20"
+    />
+
+    <!-- Medical facility (CSKCB) -->
+    <menuitem
+        id="menu_medical_facility"
+        name="CSKCB"
+        parent="menu_hic_category"
+        action="action_medical_facility"
+        sequence="30"
+    />
+
+    <!-- Cấp độ chuyên môn kĩ thuật -->
+    <menuitem
+        id="menu_technical_level"
+        name="Technical Level"
+        parent="menu_hic_category"
+        action="action_technical_level"
+        sequence="40"
+    />
+
+    <!-- Tỉ lệ thanh toán trái tuyến -->
+    <menuitem
+        id="menu_payment_rate"
+        name="Payment Rate"
+        parent="menu_hic_category"
+        action="action_payment_rate"
+        sequence="50"
+    />
+
+    <!-- Nhân viên Y tế -->
+    <menuitem
+        id="menu_medical_staff"
+        name="Medical Staff"
+        parent="menu_hic_category"
+        action="action_medical_staff"
+        sequence="60"
+    />
+</odoo>

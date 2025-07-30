@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Mã loại khám chữa bệnh của NVYT -->
+    <record id="medical_service_code_01" model="hic.category">
+        <field name="category_type">medical_service_code</field>
+        <field name="code">1</field>
+        <field name="name">Khám bệnh, chữa bệnh ngoại trú</field>
+    </record>
+
+    <record id="medical_service_code_02" model="hic.category">
+        <field name="category_type">medical_service_code</field>
+        <field name="code">4</field>
+        <field name="name">Điều trị nội trú</field>
+    </record>
+
+    <record id="medical_service_code_03" model="hic.category">
+        <field name="category_type">medical_service_code</field>
+        <field name="code">2</field>
+        <field name="name">Khác</field>
+    </record>
+</odoo>

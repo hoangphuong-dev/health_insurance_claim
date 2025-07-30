@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Search view for BHYT beds -->
+    <record id="view_hospital_bed_bhyt_search" model="ir.ui.view">
+        <field name="name">hic.hospital.bed.bhyt.search</field>
+        <field name="model">hic.hospital.bed</field>
+        <field name="arch" type="xml">
+            <search string="Search BHYT Beds">
+                <field name="code" string="Bed Code" />
+                <field name="name" string="Bed Name" />
+                <field name="department_id" string="Department" />
+                <field name="price" string="Price" />
+                <group expand="0" string="Group By">
+                    <filter
+                        string="Department"
+                        name="group_department"
+                        context="{'group_by': 'department_id'}"
+                    />
+                    <filter
+                        string="Price"
+                        name="group_price"
+                        context="{'group_by': 'price'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Search view for HIS beds -->
+    <record id="view_hospital_bed_his_search" model="ir.ui.view">
+        <field name="name">hic.hospital.bed.his.search</field>
+        <field name="model">hic.hospital.bed</field>
+        <field name="arch" type="xml">
+            <search string="Search HIS Beds">
+                <field name="code" string="HIS Code" />
+                <field name="name" string="Bed Name" />
+            </search>
+        </field>
+    </record>
+
+    <!-- Form to create new BHYT bed -->
+    <record id="view_hospital_bed_bhyt_create_form" model="ir.ui.view">
+        <field name="name">hic.hospital.bed.bhyt.create.form</field>
+        <field name="model">hic.hospital.bed</field>
+        <field name="arch" type="xml">
+            <form string="Create New BHYT Bed">
+                <sheet>
+                    <group>
+                        <field
+                            name="name"
+                            string="BHYT Bed Name"
+                            placeholder="Enter BHYT bed name..."
+                            required="1"
+                        />
+                        <field
+                            name="code"
+                            string="BHYT Bed Code"
+                            placeholder="e.g: GB001"
+                            required="1"
+                        />
+                        <field name="department_id" string="Department" />
+                        <field
+                            name="price"
+                            string="Price"
+                            widget="monetary"
+                            options="{'currency_field': False}"
+                        />
+                        <field
+                            name="his_bed_ids"
+                            string="HIS Beds"
+                            widget="many2many_tags"
+                            context="{'tree_view_ref': 'health_insurance_claim.view_hospital_bed_his_list'}"
+                            domain="[('bed_type', '=', 'his')]"
+                        />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_create_bhyt_bed_form" model="ir.actions.act_window">
+        <field name="name">Create New BHYT Bed</field>
+        <field name="res_model">hic.hospital.bed</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_hospital_bed_bhyt_create_form" />
+        <field name="target">current</field>
+        <field name="context">{
+            'default_bed_type': 'bhyt'
+        }</field>
+    </record>
+
+    <!-- List view for BHYT beds -->
+    <record id="view_hospital_bed_bhyt_list" model="ir.ui.view">
+        <field name="name">hic.hospital.bed.bhyt.list</field>
+        <field name="model">hic.hospital.bed</field>
+        <field name="arch" type="xml">
+            <list string="BHYT Hospital Beds" multi_edit="1">
+                <field name="code" string="BHYT Code" />
+                <field name="name" string="BHYT Bed Name" />
+                <field name="department_id" string="Department" optional="show" />
+                <field
+                    name="price"
+                    string="Price"
+                    widget="monetary"
+                    options="{'currency_field': False}"
+                />
+                <field
+                    name="his_bed_ids"
+                    string="HIS Beds"
+                    widget="many2many_tags"
+                    optional="show"
+                />
+            </list>
+        </field>
+    </record>
+
+    <!-- List view for HIS beds -->
+    <record id="view_hospital_bed_his_list" model="ir.ui.view">
+        <field name="name">hic.hospital.bed.his.list</field>
+        <field name="model">hic.hospital.bed</field>
+        <field name="arch" type="xml">
+            <list
+                string="HIS Hospital Beds"
+                create="false"
+                edit="false"
+                delete="false"
+                sample="1"
+            >
+                <field name="code" string="HIS Code" />
+                <field name="name" string="HIS Bed Name" />
+            </list>
+        </field>
+    </record>
+
+    <!-- Actions for list views -->
+    <record id="action_hospital_bed_bhyt" model="ir.actions.act_window">
+        <field name="name">BHYT Hospital Beds</field>
+        <field name="res_model">hic.hospital.bed</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('bed_type', '=', 'bhyt')]</field>
+        <field name="context">{
+            'default_bed_type': 'bhyt',
+        }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No BHYT hospital beds yet!
+            </p>
+        </field>
+    </record>
+
+    <record id="action_hospital_bed_his" model="ir.actions.act_window">
+        <field name="name">HIS Hospital Beds</field>
+        <field name="res_model">hic.hospital.bed</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('bed_type', '=', 'his')]</field>
+        <field name="context">{
+            'create': False,
+            'edit': False,
+            'delete': False
+        }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No HIS hospital bed data yet!
+            </p>
+        </field>
+    </record>
+
+    <!-- View references for HIS action -->
+    <record id="action_hospital_bed_his_view_list" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1" />
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="view_hospital_bed_his_list" />
+        <field name="act_window_id" ref="action_hospital_bed_his" />
+    </record>
+</odoo>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menu -->
+    <menuitem id="menu_hic_root"
+              name="Bảo hiểm Y tế"
+              sequence="10"/>
+
+    <!-- Danh mục Menu -->
+    <menuitem id="menu_hic_category"
+              name="Danh mục"
+              parent="menu_hic_root"
+              sequence="40"/>
+
+    <!-- Khoa Phòng Submenu -->
+    <menuitem id="menu_department"
+              name="Khoa Phòng"
+              parent="menu_hic_category"
+              sequence="10"/>
+
+    <menuitem id="menu_department_bhyt"
+              name="Danh mục Khoa BHYT"
+              parent="menu_department"
+              action="action_department_bhyt"
+              sequence="10"/>
+
+    <menuitem id="menu_department_his"
+              name="Danh mục Khoa Phòng từ HIS"
+              parent="menu_department"
+              action="action_department_his"
+              sequence="20"/>
+
+</odoo>

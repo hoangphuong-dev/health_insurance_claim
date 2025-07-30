@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- List View -->
+    <record id="view_medical_facility_tree" model="ir.ui.view">
+        <field name="name">hic.medical.facility.list</field>
+        <field name="model">hic.medical.facility</field>
+        <field name="arch" type="xml">
+            <list string="Medical Facilities" delete="1" create="1" edit="1">
+                <field name="code" string="Code" />
+                <field name="name" string="Name" />
+                <field name="create_uid" string="Created by" />
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_medical_facility_form" model="ir.ui.view">
+        <field name="name">hic.medical.facility.form</field>
+        <field name="model">hic.medical.facility</field>
+        <field name="arch" type="xml">
+            <form string="Medical Facility Configuration">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field
+                                name="name"
+                                placeholder="Medical facility name..."
+                                required="1"
+                            />
+                        </h1>
+                    </div>
+
+                    <group>
+                        <field name="code" required="1" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_medical_facility_search" model="ir.ui.view">
+        <field name="name">hic.medical.facility.search</field>
+        <field name="model">hic.medical.facility</field>
+        <field name="arch" type="xml">
+            <search string="Search Medical Facilities">
+                <field name="code" />
+                <field name="name" />
+
+                <separator />
+                <group expand="0" string="Group By">
+                    <filter
+                        name="group_by_creator"
+                        string="Created by"
+                        context="{'group_by': 'create_uid'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_medical_facility" model="ir.actions.act_window">
+        <field name="name">Medical Facilities</field>
+        <field name="res_model">hic.medical.facility</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_medical_facility_search" />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first medical facility!
+            </p>
+            <p>
+                Manage the list of hospitals, clinics and other medical facilities
+                in the health insurance system.
+            </p>
+        </field>
+    </record>
+</odoo>

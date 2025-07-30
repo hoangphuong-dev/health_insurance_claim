@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Discharge Type Code Form View -->
+    <record id="view_discharge_type_form" model="ir.ui.view">
+        <field name="name">hic.category.discharge.form</field>
+        <field name="model">hic.category</field>
+        <field name="arch" type="xml">
+            <form string="Discharge Type Code">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code" string="Discharge Type Code" />
+                        </group>
+                        <group>
+                            <field name="name" string="Discharge Type Name" />
+                            <field name="active" invisible="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <!-- Discharge Type Code List View -->
+    <record id="view_discharge_type_list" model="ir.ui.view">
+        <field name="name">hic.category.discharge.list</field>
+        <field name="model">hic.category</field>
+        <field name="arch" type="xml">
+            <list string="Discharge Type Code List">
+                <field name="code" string="Discharge Type Code" width="20%" />
+                <field name="name" string="Discharge Type Name" width="50%" />
+                <field name="create_uid" width="10%" />
+            </list>
+        </field>
+    </record>
+
+    <!-- Discharge Type Code Search View -->
+    <record id="view_discharge_type_search" model="ir.ui.view">
+        <field name="name">hic.category.discharge.search</field>
+        <field name="model">hic.category</field>
+        <field name="arch" type="xml">
+            <search string="Search Discharge Type Code">
+                <field name="code" string="Discharge Type Code" />
+                <field name="name" string="Discharge Type Name" />
+                <separator />
+                <filter
+                    string="Archived"
+                    name="inactive"
+                    domain="[('active', '=', False)]"
+                />
+            </search>
+        </field>
+    </record>
+
+    <!-- Discharge Type Code Action -->
+    <record id="action_discharge_type_code" model="ir.actions.act_window">
+        <field name="name">Discharge Type Code</field>
+        <field name="res_model">hic.category</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_discharge_type_list" />
+        <field name="context">{
+            'default_category_type': 'discharge_type_code',
+            'form_view_ref': 'health_insurance_claim.view_discharge_type_form'
+        }</field>
+        <field name="domain">[('category_type', '=', 'discharge_type_code')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first discharge type code!
+            </p>
+            <p>
+                Define discharge type codes and their corresponding names.
+            </p>
+        </field>
+    </record>
+</odoo>

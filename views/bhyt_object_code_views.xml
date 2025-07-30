@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- BHYT Object Code Form View -->
+    <record id="view_bhyt_object_form" model="ir.ui.view">
+        <field name="name">hic.category.bhyt.form</field>
+        <field name="model">hic.category</field>
+        <field name="arch" type="xml">
+            <form string="BHYT Object Code">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code" string="BHYT Object Code" />
+                        </group>
+                        <group>
+                            <field name="name" string="BHYT Object Name" />
+                            <field name="active" invisible="1" />
+                            <field name="category_type" invisible="1" />
+                        </group>
+                        <label for="benefit_code" />
+                        <field name="benefit_code" required="1" />
+                    </group>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <!-- BHYT Object Code List View -->
+    <record id="view_bhyt_object_list" model="ir.ui.view">
+        <field name="name">hic.category.bhyt.list</field>
+        <field name="model">hic.category</field>
+        <field name="arch" type="xml">
+            <list string="BHYT Object Code List">
+                <field name="code" string="BHYT Object Code" width="20%" />
+                <field name="name" string="BHYT Object Name" width="50%" />
+                <field name="benefit_code" width="20%" />
+                <field name="create_uid" width="10%" />
+            </list>
+        </field>
+    </record>
+
+    <!-- BHYT Object Code Search View -->
+    <record id="view_bhyt_object_search" model="ir.ui.view">
+        <field name="name">hic.category.bhyt.search</field>
+        <field name="model">hic.category</field>
+        <field name="arch" type="xml">
+            <search string="Search BHYT Object Code">
+                <field name="code" string="BHYT Object Code" />
+                <field name="name" string="BHYT Object Name" />
+                <field name="benefit_code" />
+                <field name="create_uid" />
+                <separator />
+                <filter
+                    string="Archived"
+                    name="inactive"
+                    domain="[('active', '=', False)]"
+                />
+                <group expand="0" string="Group By">
+                    <filter
+                        string="Benefit Code"
+                        name="group_benefit_code"
+                        context="{'group_by': 'benefit_code'}"
+                    />
+                    <filter
+                        string="Created by"
+                        name="group_creator"
+                        context="{'group_by': 'create_uid'}"
+                    />
+                    <filter
+                        string="Created date"
+                        name="group_create_date"
+                        context="{'group_by': 'create_date:month'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- BHYT Object Code Action -->
+    <record id="action_bhyt_object_code" model="ir.actions.act_window">
+        <field name="name">BHYT Object Code</field>
+        <field name="res_model">hic.category</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_bhyt_object_list" />
+        <field name="context">{
+            'default_category_type': 'bhyt_object_code',
+            'form_view_ref': 'health_insurance_claim.view_bhyt_object_form'
+        }</field>
+        <field name="domain">[('category_type', '=', 'bhyt_object_code')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first BHYT object code!
+            </p>
+            <p>
+                Define BHYT object codes and their corresponding names.
+            </p>
+        </field>
+    </record>
+</odoo>

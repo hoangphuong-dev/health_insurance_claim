@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- List View -->
+    <record id="view_technical_level_list" model="ir.ui.view">
+        <field name="name">hic.category.list</field>
+        <field name="model">hic.category</field>
+        <field name="arch" type="xml">
+            <list string="Technical Levels" delete="1" create="1" edit="1">
+                <field name="code" />
+                <field name="name" />
+                <field
+                    name="description"
+                    column_invisible="context.get('hide_description', False)"
+                />
+                <field name="create_uid" />
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_technical_level_form" model="ir.ui.view">
+        <field name="name">hic.category.form</field>
+        <field name="model">hic.category</field>
+        <field name="arch" type="xml">
+            <form string="Category Configuration">
+                <sheet>
+                    <group>
+                        <field name="name" placeholder="Enter Name..." required="1" />
+                        <field name="code" required="1" />
+                        <field
+                            name="description"
+                            placeholder="Enter detailed description of the technical level..."
+                            invisible="context.get('hide_description', False)"
+                        />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_category_search" model="ir.ui.view">
+        <field name="name">hic.category.search</field>
+        <field name="model">hic.category</field>
+        <field name="arch" type="xml">
+            <search string="Search Technical Levels">
+                <field name="code" string="Code" />
+                <field name="name" string="Name" />
+
+                <separator />
+                <group expand="0" string="Group By">
+                    <filter
+                        name="group_by_creator"
+                        string="Created by"
+                        context="{'group_by': 'create_uid'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action cho Cấp độ chuyên môn kỹ thuật -->
+    <record id="action_technical_level" model="ir.actions.act_window">
+        <field name="name">Technical Levels</field>
+        <field name="res_model">hic.category</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_category_search" />
+        <field name="domain">[('category_type', '=', 'technical_level')]</field>
+        <field name="context">{'default_category_type': 'technical_level'}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first technical level!
+            </p>
+        </field>
+    </record>
+
+    <!-- Action cho chức danh nghề nghiệp -->
+    <record id="action_professional_title" model="ir.actions.act_window">
+        <field name="name">Professional Title</field>
+        <field name="res_model">hic.category</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_category_search" />
+        <field name="domain">[('category_type', '=', 'professional_title')]</field>
+        <field
+            name="context"
+        >{'default_category_type': 'professional_title', 'hide_description': True}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Professional Title!
+            </p>
+        </field>
+    </record>
+
+    <!-- Action cho mã loại khám chữa bệnh của NVYT -->
+    <record id="action_medical_service_code" model="ir.actions.act_window">
+        <field name="name">Medical Service Code</field>
+        <field name="res_model">hic.category</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_category_search" />
+        <field name="domain">[('category_type', '=', 'medical_service_code')]</field>
+        <field
+            name="context"
+        >{'default_category_type': 'medical_service_code', 'hide_description': True}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Medical Service Code!
+            </p>
+        </field>
+    </record>
+</odoo>

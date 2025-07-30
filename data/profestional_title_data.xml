@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Chức danh nghề nghiệp -->
+    <record id="profestional_title_cd01" model="hic.category">
+        <field name="category_type">profestional_title</field>
+        <field name="code">1</field>
+        <field name="name">Bác sĩ</field>
+    </record>
+
+    <record id="profestional_title_cd02" model="hic.category">
+        <field name="category_type">profestional_title</field>
+        <field name="code">2</field>
+        <field name="name">Y sĩ</field>
+    </record>
+
+    <record id="profestional_title_cd03" model="hic.category">
+        <field name="category_type">profestional_title</field>
+        <field name="code">3</field>
+        <field name="name">Điều dưỡng</field>
+    </record>
+
+    <record id="profestional_title_cd04" model="hic.category">
+        <field name="category_type">profestional_title</field>
+        <field name="code">4</field>
+        <field name="name">Hộ sinh</field>
+    </record>
+
+    <record id="profestional_title_cd05" model="hic.category">
+        <field name="category_type">profestional_title</field>
+        <field name="code">5</field>
+        <field name="name">Kỹ thuật viên</field>
+    </record>
+
+    <record id="profestional_title_cd06" model="hic.category">
+        <field name="category_type">profestional_title</field>
+        <field name="code">6</field>
+        <field name="name">Cử nhân X-quang</field>
+    </record>
+
+    <record id="profestional_title_cd07" model="hic.category">
+        <field name="category_type">profestional_title</field>
+        <field name="code">7</field>
+        <field name="name">Dược sĩ đại học</field>
+    </record>
+
+    <record id="profestional_title_cd08" model="hic.category">
+        <field name="category_type">profestional_title</field>
+        <field name="code">8</field>
+        <field name="name">Dược sĩ Trung cấp</field>
+    </record>
+
+    <record id="profestional_title_cd09" model="hic.category">
+        <field name="category_type">profestional_title</field>
+        <field name="code">9</field>
+        <field name="name">Lương y</field>
+    </record>
+
+    <record id="profestional_title_cd10" model="hic.category">
+        <field name="category_type">profestional_title</field>
+        <field name="code">10</field>
+        <field name="name">Cử nhân xét nghiệm</field>
+    </record>
+</odoo>

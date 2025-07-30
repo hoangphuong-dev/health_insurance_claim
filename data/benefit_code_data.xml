@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <!-- Sample data for Benefit Code based on the image -->
+    <record id="benefit_code_1" model="hic.benefit.code">
+        <field name="benefit_code">1</field>
+        <field name="benefit_rate">100</field>
+        <field name="is_payment_condition_applied">False</field>
+        <field name="is_transport_cost_covered">True</field>
+        <field name="is_non_bhyt_cost_paid">False</field>
+    </record>
+
+    <record id="benefit_code_2" model="hic.benefit.code">
+        <field name="benefit_code">2</field>
+        <field name="benefit_rate">100</field>
+        <field name="is_payment_condition_applied">False</field>
+        <field name="is_transport_cost_covered">False</field>
+        <field name="is_non_bhyt_cost_paid">False</field>
+    </record>
+
+    <record id="benefit_code_3" model="hic.benefit.code">
+        <field name="benefit_code">3</field>
+        <field name="benefit_rate">95</field>
+        <field name="is_payment_condition_applied">True</field>
+        <field name="is_transport_cost_covered">False</field>
+        <field name="is_non_bhyt_cost_paid">False</field>
+    </record>
+
+    <record id="benefit_code_4" model="hic.benefit.code">
+        <field name="benefit_code">4</field>
+        <field name="benefit_rate">80</field>
+        <field name="is_payment_condition_applied">True</field>
+        <field name="is_transport_cost_covered">False</field>
+        <field name="is_non_bhyt_cost_paid">False</field>
+    </record>
+
+    <record id="benefit_code_5" model="hic.benefit.code">
+        <field name="benefit_code">5</field>
+        <field name="benefit_rate">95</field>
+        <field name="is_payment_condition_applied">True</field>
+        <field name="is_transport_cost_covered">True</field>
+        <field name="is_non_bhyt_cost_paid">False</field>
+    </record>
+</odoo>

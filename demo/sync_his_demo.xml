@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Cơ sở khám chữa bệnh -->
+    <record id="demo_facility_bachmai" model="hic.medical.facility">
+        <field name="code">01001</field>
+        <field name="name">Bệnh viện Sun Group</field>
+    </record>
+
+    <record id="demo_facility_hongngoc" model="hic.medical.facility">
+        <field name="code">01002</field>
+        <field name="name">Bệnh viện Hồng Ngọc</field>
+    </record>
+
+    <!-- Cấp độ chuyên môn kĩ thuật -->
+    <record id="demo_technical_level_cd01" model="hic.category">
+        <field name="category_type">technical_level</field>
+        <field name="code">CD_01</field>
+        <field name="name">Ban đầu</field>
+        <field
+            name="description"
+        >Cấp độ chuyên môn kỹ thuật ban đầu, áp dụng cho các dịch vụ y tế cơ bản</field>
+    </record>
+
+    <record id="demo_technical_level_cd02" model="hic.category">
+        <field name="category_type">technical_level</field>
+        <field name="code">CD_02</field>
+        <field name="name">Cơ bản</field>
+        <field
+            name="description"
+        >Cấp độ chuyên môn kỹ thuật cơ bản, áp dụng cho các dịch vụ y tế thường quy</field>
+    </record>
+
+    <record id="demo_technical_level_cd03" model="hic.category">
+        <field name="category_type">technical_level</field>
+        <field name="code">CD_03</field>
+        <field name="name">Chuyên sâu</field>
+        <field
+            name="description"
+        >Cấp độ chuyên môn kỹ thuật chuyên sâu, áp dụng cho các dịch vụ y tế phức tạp cao</field>
+    </record>
+
+    <!-- Demo HIS deparment (KhoaPhong) -->
+    <record id="his_dept_noi" model="hr.department">
+        <field name="name">Khoa Nội tổng hợp</field>
+        <field name="department_source">his</field>
+        <field name="his_code">K01</field>
+        <field name="patient_department" eval="True" />
+    </record>
+
+    <record id="his_dept_ngoai" model="hr.department">
+        <field name="name">Khoa Ngoại tổng hợp</field>
+        <field name="department_source">his</field>
+        <field name="his_code">K02</field>
+        <field name="patient_department" eval="True" />
+    </record>
+
+    <record id="his_dept_san" model="hr.department">
+        <field name="name">Khoa Sản</field>
+        <field name="department_source">his</field>
+        <field name="his_code">K03</field>
+        <field name="patient_department" eval="True" />
+    </record>
+
+    <record id="his_dept_nhi" model="hr.department">
+        <field name="name">Khoa Nhi</field>
+        <field name="department_source">his</field>
+        <field name="his_code">K04</field>
+        <field name="patient_department" eval="True" />
+    </record>
+
+    <record id="his_dept_cap_cuu" model="hr.department">
+        <field name="name">Khoa Cấp cứu</field>
+        <field name="department_source">his</field>
+        <field name="his_code">K05</field>
+        <field name="patient_department" eval="True" />
+    </record>
+
+    <record id="his_dept_chan_doan" model="hr.department">
+        <field name="name">Khoa Chẩn đoán hình ảnh</field>
+        <field name="department_source">his</field>
+        <field name="his_code">K06</field>
+        <field name="patient_department" eval="True" />
+    </record>
+
+    <record id="his_dept_xet_nghiem" model="hr.department">
+        <field name="name">Khoa Xét nghiệm</field>
+        <field name="department_source">his</field>
+        <field name="his_code">K07</field>
+        <field name="patient_department" eval="True" />
+    </record>
+
+    <!-- Demo HIS Beds -->
+    <record id="his_bed_01" model="hic.hospital.bed">
+        <field name="code">HIS01</field>
+        <field name="name">Giường kế hoạch</field>
+        <field name="bed_type">his</field>
+        <field name="price">280000</field>
+    </record>
+
+    <record id="his_bed_02" model="hic.hospital.bed">
+        <field name="code">HIS02</field>
+        <field name="name">Giường hồi sức</field>
+        <field name="bed_type">his</field>
+        <field name="price">500000</field>
+    </record>
+
+    <record id="his_bed_03" model="hic.hospital.bed">
+        <field name="code">HIS03</field>
+        <field name="name">Giường VIP</field>
+        <field name="bed_type">his</field>
+        <field name="price">1000000</field>
+    </record>
+
+    <record id="his_bed_04" model="hic.hospital.bed">
+        <field name="code">HIS04</field>
+        <field name="name">Giường Nội trú</field>
+        <field name="bed_type">his</field>
+        <field name="price">350000</field>
+    </record>
+
+    <record id="his_bed_05" model="hic.hospital.bed">
+        <field name="code">HIS05</field>
+        <field name="name">Giường Ngoại trú</field>
+        <field name="bed_type">his</field>
+        <field name="price">200000</field>
+    </record>
+
+    <!-- Nhân viên Y tế của HIS -->
+    <record id="his_medical_staff_01" model="hr.employee">
+        <field name="his_code">NV001</field>
+        <field name="name">Hoàng Văn A</field>
+    </record>
+
+    <record id="his_medical_staff_02" model="hr.employee">
+        <field name="his_code">NV002</field>
+        <field name="name">Nguyễn Thị Bình</field>
+    </record>
+
+    <record id="his_medical_staff_03" model="hr.employee">
+        <field name="his_code">NV003</field>
+        <field name="name">Trần Văn Cường</field>
+    </record>
+
+    <record id="his_medical_staff_04" model="hr.employee">
+        <field name="his_code">NV004</field>
+        <field name="name">Lê Thị Dung</field>
+    </record>
+
+    <record id="his_medical_staff_05" model="hr.employee">
+        <field name="his_code">NV005</field>
+        <field name="name">Phạm Minh Đức</field>
+    </record>
+
+    <record id="his_medical_staff_06" model="hr.employee">
+        <field name="his_code">NV006</field>
+        <field name="name">Vũ Thị Hoa</field>
+    </record>
+</odoo>

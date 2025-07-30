@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hic_benefit_code_manager,hic.benefit.code.manager,model_hic_benefit_code,base.group_system,1,1,1,1
+access_hic_reference_level_manager,hic.reference.level.manager,model_hic_reference_level,base.group_system,1,1,1,1
+access_hic_hospital_bed_user,hic.hospital.bed.user,model_hic_hospital_bed,base.group_user,1,1,1,1
+access_medical_facility_user,hic.medical.facility.user,model_hic_medical_facility,base.group_user,1,1,1,1
+access_category_user,hic.category.user,model_hic_category,base.group_user,1,1,1,1
+access_payment_rate_user,hic.payment.rate.user,model_hic_payment_rate,base.group_user,1,1,1,1

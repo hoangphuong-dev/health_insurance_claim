@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- List View -->
+    <record id="view_off_line_payment_rate_list" model="ir.ui.view">
+        <field name="name">hic.payment.rate.list</field>
+        <field name="model">hic.payment.rate</field>
+        <field name="arch" type="xml">
+            <list string="Payment Rates" delete="1" create="1" edit="1">
+                <field name="code" string="Code" />
+                <field name="medical_facility_id" />
+                <field name="technical_level_id" />
+                <field name="outpatient_rate" widget="percentage" />
+                <field name="inpatient_rate" widget="percentage" />
+                <field name="date_from" />
+                <field name="date_to" />
+                <field name="create_uid" />
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_off_line_payment_rate_form" model="ir.ui.view">
+        <field name="name">hic.payment.rate.form</field>
+        <field name="model">hic.payment.rate</field>
+        <field name="arch" type="xml">
+            <form string="Offline Payment Rate Configuration">
+                <sheet>
+                    <group>
+                        <group string="Basic Information">
+                            <field
+                                name="code"
+                                placeholder="Payment rate code..."
+                                required="1"
+                            />
+                            <field
+                                name="medical_facility_id"
+                                options="{'no_create': True, 'no_create_edit': True}"
+                                required="1"
+                            />
+                            <field
+                                name="technical_level_id"
+                                options="{'no_create': True, 'no_create_edit': True}"
+                                required="1"
+                            />
+                        </group>
+                    </group>
+
+                    <group>
+                        <group string="Payment Rates">
+                            <field
+                                name="outpatient_rate"
+                                required="1"
+                                widget="percentage"
+                            />
+                            <field
+                                name="inpatient_rate"
+                                required="1"
+                                widget="percentage"
+                            />
+                        </group>
+                        <group string="Validity Period">
+                            <field name="date_from" required="1" />
+                            <field name="date_to" required="1" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_off_line_payment_rate_search" model="ir.ui.view">
+        <field name="name">hic.payment.rate.search</field>
+        <field name="model">hic.payment.rate</field>
+        <field name="arch" type="xml">
+            <search string="Search Payment Rates">
+                <field name="code" string="Code" />
+                <field name="medical_facility_id" string="Hospital" />
+                <field name="technical_level_id" string="Technical Level" />
+
+                <filter
+                    name="active_today"
+                    string="Valid Today"
+                    domain="[('date_from', '&lt;=', context_today().strftime('%Y-%m-%d')),
+                                '|', ('date_to', '=', False), ('date_to', '&gt;=', context_today().strftime('%Y-%m-%d'))]"
+                />
+                <filter
+                    name="expired"
+                    string="Expired"
+                    domain="[('date_to', '&lt;', context_today().strftime('%Y-%m-%d'))]"
+                />
+
+                <separator />
+                <group expand="0" string="Group By">
+                    <filter
+                        name="group_by_facility"
+                        string="Hospital"
+                        context="{'group_by': 'medical_facility_id'}"
+                    />
+                    <filter
+                        name="group_by_technical_level"
+                        string="Technical Level"
+                        context="{'group_by': 'technical_level_id'}"
+                    />
+                    <filter
+                        name="group_by_creator"
+                        string="Created by"
+                        context="{'group_by': 'create_uid'}"
+                    />
+                    <filter
+                        name="group_by_date_from"
+                        string="From Date"
+                        context="{'group_by': 'date_from'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_payment_rate" model="ir.actions.act_window">
+        <field name="name">Payment Rates</field>
+        <field name="res_model">hic.payment.rate</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_off_line_payment_rate_search" />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first payment rate!
+            </p>
+            <p>
+                Manage payment rates for medical services
+                by hospital and technical level.
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,921 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* health_insurance_claim
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0-20250714\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-31 02:36+0000\n"
+"PO-Revision-Date: 2025-07-31 02:36+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: base
+#: model:ir.module.module,shortdesc:base.module_health_insurance_claim
+msgid "Health Insurance Claim (HIC)"
+msgstr "Giám định bảo hiểm y tế (HIC)"
+
+#. module: base
+#: model:ir.module.module,summary:base.module_health_insurance_claim
+msgid "Health Insurance Claim Management System"
+msgstr "Hệ thống hỗ trợ giám định bảo hiểm y tế"
+
+#. module: base
+#: model:ir.module.module,description:base.module_health_insurance_claim
+msgid ""
+"\n"
+"Health Insurance Claim Management System\n"
+"========================================\n"
+"Management of health insurance claim records (BHYT)\n"
+"* Integration with HIS to synchronize patient and service data\n"
+"* Mapping BHYT-HIS categories (Services, Medicines, Medical Equipment, Departments)\n"
+"* Claim workflow and sending records to BHYT portal\n"
+"* Generate XML according to Decision 4750/QD-BYT standard\n"
+msgstr ""
+"\n"
+"Hệ thống hỗ trợ giám định bảo hiểm y tế\n"
+"========================================\n"
+"Quản lý hồ sơ giám định bảo hiểm y tế (BHYT)\n"
+"* Tích hợp với HIS để đồng bộ dữ liệu bệnh nhân và dịch vụ\n"
+"* Mapping danh mục BHYT-HIS (DVKT, Thuốc, VTYT, Khoa phòng)\n"
+"* Workflow giám định và gửi hồ sơ lên cổng BHYT\n"
+"* Tạo XML theo chuẩn Quyết định 4750/QĐ-BYT\n"
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/reference_level.py:0
+msgid "The reference level time is overlapping with the reference level %s. Please check again."
+msgstr "Thời gian của mức tham chiếu đang bị trùng với mức tham chiếu %s. Vui lòng kiểm tra lại."
+
+#. module: health_insurance_claim
+#: model:ir.ui.menu,name:health_insurance_claim.menu_configuration
+msgid "Configuration"
+msgstr "Cấu hình"
+
+#. module: health_insurance_claim
+#: model_terms:ir.actions.act_window,help:health_insurance_claim.action_reference_level
+msgid "Create your first reference level"
+msgstr "Tạo mức tham chiếu đầu tiên."
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_hospital_bed__create_uid
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_reference_level__create_uid
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_benefit_code__create_uid
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_category__create_uid
+msgid "Created by"
+msgstr "Người tạo"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_hospital_bed__create_date
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_reference_level__create_date
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_benefit_code__create_date
+msgid "Created on"
+msgstr "Ngày tạo"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_reference_level_search
+msgid "Current Reference Level"
+msgstr "Mức tham chiếu hiện tại"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_reference_level__end_date
+msgid "End Date"
+msgstr "Ngày kết thúc"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_reference_level_search
+msgid "End Month"
+msgstr "Tháng kết thúc"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,help:health_insurance_claim.field_hic_reference_level__end_date
+msgid "End date for applying the reference level"
+msgstr "Ngày kết thúc áp dụng mức tham chiếu."
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_reference_level_search
+msgid "Expired Reference Level"
+msgstr "Mức tham chiếu đã hết hạn"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_hospital_bed__write_uid
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_reference_level__write_uid
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_benefit_code__write_uid
+msgid "Last Updated by"
+msgstr "Người chỉnh sửa"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_hospital_bed__write_date
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_reference_level__write_date
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_benefit_code__write_date
+msgid "Last Updated on"
+msgstr "Ngày chinh sửa"
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/reference_level.py:0
+msgid "New"
+msgstr "Mới"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_reference_level__reference_code
+msgid "Reference Code"
+msgstr "Mã tham chiếu"
+
+#. module: health_insurance_claim
+#: model:ir.actions.act_window,name:health_insurance_claim.action_reference_level
+#: model:ir.model,name:health_insurance_claim.model_hic_reference_level
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_reference_level__level_number
+#: model:ir.ui.menu,name:health_insurance_claim.menu_reference_level
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_reference_level_form
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_reference_level_search
+msgid "Reference Level"
+msgstr "Mức tham chiếu"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_reference_level_list
+msgid "Reference Level List"
+msgstr "Danh sách mức tham chiếu"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,help:health_insurance_claim.field_hic_reference_level__level_number
+msgid "Coefficient for the appraisal system to automatically determine and apply the 100% co-payment exemption benefit to eligible patients."
+msgstr "Hệ số để hệ thống giám định có thể tự động xác định và áp dụng quyền lợi miễn giảm 100% chi phí đồng chi trả cho những người bệnh đủ điều kiện."
+
+#. module: health_insurance_claim
+#: model_terms:ir.actions.act_window,help:health_insurance_claim.action_reference_level
+msgid ""
+"Reference levels are used to define different levels in the health insurance system\n"
+"                    with specific application periods."
+msgstr "Các mức tham chiếu được sử dụng để xác định các mức khác nhau trong hệ thống bảo hiểm y tế với thời gian áp dụng cụ thể."
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_reference_level_search
+msgid "Search Reference Level"
+msgstr "Tìm kiếm mức tham chiếu"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_reference_level__start_date
+msgid "Start Date"
+msgstr "Ngày bắt đầu"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_reference_level_search
+msgid "Start Month"
+msgstr "Tháng bắt đầu"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,help:health_insurance_claim.field_hic_reference_level__start_date
+msgid "Start date for applying the reference level"
+msgstr "Ngày bắt đầu áp dụng mức tham chiếu."
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/reference_level.py:0
+msgid "Start date must be less than end date!"
+msgstr "Ngày bắt đầu phải nhỏ hơn ngày kết thúc!"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_reference_level_search
+msgid "Upcoming Reference Level"
+msgstr "Mức tham chiếu trong tương lai"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_benefit_code_search
+msgid "Benefit Rate"
+msgstr "Mức hưởng"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_benefit_code_search
+msgid "Created Date"
+msgstr "Ngày tạo"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,help:health_insurance_claim.field_hic_benefit_code__benefit_rate
+msgid "Percentage of coverage for this benefit code"
+msgstr "Mức hưởng bảo hiểm y tế cho mã quyền lợi này"
+
+#. module: health_insurance_claim
+#: model:ir.model.constraint,message:health_insurance_claim.constraint_hic_benefit_code_benefit_code_uniq
+msgid "Benefit code must be unique!"
+msgstr "Mã quyền lợi phải là duy nhất!"
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/benefit_code.py:0
+#: model:ir.model.constraint,message:health_insurance_claim.constraint_hic_benefit_code_benefit_rate_check
+msgid "Benefit rate must be between 1 and 100!"
+msgstr "Mức hưởng phải trong khoảng từ 1% đến 100%!"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_benefit_code_form
+msgid "Options"
+msgstr "Tùy chọn"
+
+#. module: health_insurance_claim
+#: model:ir.actions.act_window,name:health_insurance_claim.action_benefit_code
+#: model:ir.model,name:health_insurance_claim.model_hic_benefit_code
+#: model:ir.ui.menu,name:health_insurance_claim.menu_hic_benefit_code
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_benefit_code_form
+msgid "Health Insurance Benefit Code"
+msgstr "Mã Quyền lợi"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_benefit_code__benefit_code
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_category__benefit_code
+msgid "Benefit Code"
+msgstr "Mã quyền lợi"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_benefit_code__benefit_rate
+msgid "Benefit Rate (%)"
+msgstr "Mức hưởng (%)"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_benefit_code__is_payment_condition_applied
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_benefit_code_form
+msgid "Apply Payment Conditions"
+msgstr "Áp dụng điều kiện thanh toán với một số thuốc - hóa chất - VTYT - DVKT"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_benefit_code__is_transport_cost_covered
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_benefit_code_form
+msgid "Transportation Cost Covered"
+msgstr "Được chi trả Chi phí vận chuyển"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_benefit_code__is_non_bhyt_cost_paid
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_benefit_code_form
+msgid "Out of Scope BHYT Costs Covered"
+msgstr "Được TT CP ngoài phạm vi hưởng BHYT"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_benefit_code_search
+msgid "Created By"
+msgstr "Người tạo"
+
+#. module: health_insurance_claim
+#: model:ir.model.constraint,message:health_insurance_claim.constraint_hic_benefit_code_benefit_code_check
+msgid "Benefit code must be greater than 0!"
+msgstr "Mã quyền lợi phải lớn hơn 0!"
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/category.py:0
+#: model:ir.actions.act_window,name:health_insurance_claim.action_bhyt_object_code
+#: model:ir.model.fields.selection,name:health_insurance_claim.selection__hic_category__category_type__bhyt_object_code
+#: model:ir.ui.menu,name:health_insurance_claim.menu_bhyt_object_code
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_bhyt_object_form
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_bhyt_object_list
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_bhyt_object_search
+msgid "BHYT Object Code"
+msgstr "Mã Đối tượng BHYT"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_bhyt_object_form
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_bhyt_object_list
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_bhyt_object_search
+msgid "BHYT Object Name"
+msgstr "Đối tượng"
+
+#. module: health_insurance_claim
+#: model_terms:ir.actions.act_window,help:health_insurance_claim.action_bhyt_object_code
+msgid "Create your first BHYT object code!"
+msgstr "Tạo mã đối tượng BHYT đầu tiên của bạn!"
+
+#. module: health_insurance_claim
+#: model_terms:ir.actions.act_window,help:health_insurance_claim.action_bhyt_object_code
+msgid "Define BHYT object codes and their corresponding names."
+msgstr "Định nghĩa mã đối tượng BHYT với tên tương ứng."
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/category.py:0
+msgid "BHYT object code must be less than 2 characters and must not contain numbers or special characters!"
+msgstr "Mã đối tượng chỉ nhỏ hơn 2 ký tự và không chứa số hoặc ký tự đặc biệt!"
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/category.py:0
+msgid "KCB object code must not exceed 4 characters!"
+msgstr "Mã đối tượng KCB không được vượt quá 4 ký tự!"
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/category.py:0
+msgid "%(name)s must be between %(min)s and %(max)s!"
+msgstr "%(name)s phải nằm trong khoảng từ %(min)s đến %(max)s!"
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/category.py:0
+msgid "%(name)s must be a number!"
+msgstr "%(name)s phải là số!"
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/category.py:0
+#: model:ir.actions.act_window,name:health_insurance_claim.action_kcb_object_code
+#: model:ir.model.fields.selection,name:health_insurance_claim.selection__hic_category__category_type__kcb_object_code
+#: model:ir.ui.menu,name:health_insurance_claim.menu_kcb_object_code
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_category_search
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_kcb_object_form
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_kcb_object_list
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_kcb_object_search
+msgid "KCB Object Code"
+msgstr "Mã Đối tượng KCB"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_kcb_object_form
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_kcb_object_list
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_kcb_object_search
+msgid "KCB Object Name"
+msgstr "Tên đối tượng KCB"
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/category.py:0
+#: model:ir.actions.act_window,name:health_insurance_claim.action_discharge_type_code
+#: model:ir.model.fields.selection,name:health_insurance_claim.selection__hic_category__category_type__discharge_type_code
+#: model:ir.ui.menu,name:health_insurance_claim.menu_discharge_type_code
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_category_search
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_discharge_type_form
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_discharge_type_list
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_discharge_type_search
+msgid "Discharge Type Code"
+msgstr "Mã loại ra viện"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_discharge_type_form
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_discharge_type_list
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_discharge_type_search
+msgid "Discharge Type Name"
+msgstr "Tên loại ra viện"
+
+#. module: health_insurance_claim
+#: model_terms:ir.actions.act_window,help:health_insurance_claim.action_discharge_type_code
+msgid "Create your first discharge type code!"
+msgstr "Tạo mã loại ra viện đầu tiên của bạn!"
+
+#. module: health_insurance_claim
+#: model_terms:ir.actions.act_window,help:health_insurance_claim.action_discharge_type_code
+msgid "Define discharge type codes and their corresponding names."
+msgstr "Định nghĩa mã loại ra viện với tên tương ứng."
+
+#. module: health_insurance_claim
+#: model_terms:ir.actions.act_window,help:health_insurance_claim.action_kcb_object_code
+msgid "Create your first KCB object code!"
+msgstr "Tạo mã đối tượng KCB đầu tiên của bạn!"
+
+#. module: health_insurance_claim
+#: model_terms:ir.actions.act_window,help:health_insurance_claim.action_kcb_object_code
+msgid "Define KCB object codes and their corresponding names."
+msgstr "Định nghĩa mã đối tượng KCB với tên tương ứng."
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/category.py:0
+msgid "%(name)s with the code %(code)s already exists. Please check again."
+msgstr "Đã tồn tại %(name)s với mã %(code)s. Vui lòng kiểm tra lại."
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/category.py:0
+#: model:ir.actions.act_window,name:health_insurance_claim.action_accident_code
+#: model:ir.model.fields.selection,name:health_insurance_claim.selection__hic_category__category_type__accident_code
+#: model:ir.ui.menu,name:health_insurance_claim.menu_accident_code
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_accident_code_form
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_accident_code_list
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_accident_code_search
+msgid "Accident Code"
+msgstr "Mã Tai nạn"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_accident_code_form
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_accident_code_list
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_accident_code_search
+msgid "Accident Name"
+msgstr "Tên Tai nạn"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_accident_code_search
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_bhyt_object_search
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_discharge_type_search
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_kcb_object_search
+msgid "Archived"
+msgstr "Đã lưu trữ"
+
+#. module: health_insurance_claim
+#: model_terms:ir.actions.act_window,help:health_insurance_claim.action_accident_code
+msgid "Create your first accident code!"
+msgstr "Tạo mã tai nạn đầu tiên của bạn!"
+
+#. module: health_insurance_claim
+#: model_terms:ir.actions.act_window,help:health_insurance_claim.action_accident_code
+msgid "Define accident codes and their corresponding names."
+msgstr "Định nghĩa mã tai nạn với tên tương ứng."
+
+#. module: health_insurance_claim
+#: model:ir.model.fields.selection,name:health_insurance_claim.selection__hic_hospital_bed__bed_type__bhyt
+msgid "BHYT Bed"
+msgstr "Giường BHYT"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_create_form
+msgid "BHYT Bed Code"
+msgstr "Mã giường BHYT"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_create_form
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_list
+msgid "BHYT Bed Name"
+msgstr "Tên giường BHYT"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_bhyt_list
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_bhyt_search
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_list
+msgid "BHYT Code"
+msgstr "Mã BHYT"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_bhyt_create_form
+msgid "BHYT Department Code"
+msgstr "Mã khoa BHYT"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_bhyt_create_form
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_bhyt_list
+msgid "BHYT Department Name"
+msgstr "Tên khoa BHYT"
+
+#. module: health_insurance_claim
+#: model:ir.actions.act_window,name:health_insurance_claim.action_department_bhyt
+#: model:ir.ui.menu,name:health_insurance_claim.menu_department_bhyt
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_bhyt_list
+msgid "BHYT Departments"
+msgstr "Khoa BHYT"
+
+#. module: health_insurance_claim
+#: model:ir.actions.act_window,name:health_insurance_claim.action_hospital_bed_bhyt
+#: model:ir.ui.menu,name:health_insurance_claim.menu_hospital_bed_bhyt
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_list
+msgid "BHYT Hospital Beds"
+msgstr "Giường bệnh viện BHYT"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,help:health_insurance_claim.field_hic_hospital_bed__bhyt_bed_id
+msgid "BHYT bed that this HIS bed maps to"
+msgstr "Giường BHYT mà giường HIS này ánh xạ tới"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_hospital_bed__code
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_search
+msgid "Bed Code"
+msgstr "Mã giường"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_hospital_bed__name
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_search
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_his_search
+msgid "Bed Name"
+msgstr "Tên giường"
+
+#. module: health_insurance_claim
+#: model:ir.model.constraint,message:health_insurance_claim.constraint_hic_hospital_bed_code_type_uniq
+msgid "Bed code must be unique within the same type (BHYT/HIS)!"
+msgstr "Mã giường phải duy nhất trong cùng loại (BHYT/HIS)!"
+
+#. module: health_insurance_claim
+#: model:ir.ui.menu,name:health_insurance_claim.menu_hic_category
+msgid "Category"
+msgstr "Danh mục"
+
+#. module: health_insurance_claim
+#: model:ir.ui.menu,name:health_insurance_claim.menu_hic_root
+msgid "Health Insurance Claim"
+msgstr "Bảo hiểm y tế"
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/reference_level.py:0
+msgid ""
+"The reference level has been used for assessment and the start date is in "
+"the past. Cannot be deleted."
+msgstr "Mức tham chiếu đã được sử dụng để giám định và ngày bắt đầu đã ở trong quá khứ. Không thể xoá."
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/reference_level.py:0
+msgid "Level number must be greater than 0!"
+msgstr "Mức tham chiếu phải lớn hơn 0!"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,help:health_insurance_claim.field_hic_hospital_bed__bed_type
+msgid "Classification of bed type"
+msgstr "Phân loại loại giường"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_hospital_bed__bhyt_bed_id
+msgid "Corresponding BHYT Bed"
+msgstr "Giường BHYT tương ứng"
+
+#. module: health_insurance_claim
+#: model:ir.actions.act_window,name:health_insurance_claim.action_create_bhyt_bed_form
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_create_form
+msgid "Create New BHYT Bed"
+msgstr "Tạo giường BHYT mới"
+
+#. module: health_insurance_claim
+#: model:ir.actions.act_window,name:health_insurance_claim.action_create_bhyt_department_form
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_bhyt_create_form
+msgid "Create New BHYT Department"
+msgstr "Tạo khoa BHYT mới"
+
+#. module: health_insurance_claim
+#: model:ir.model,name:health_insurance_claim.model_hr_department
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_hospital_bed__department_id
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_create_form
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_list
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_search
+msgid "Department"
+msgstr "Khoa"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_bhyt_search
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_his_search
+msgid "Department Name"
+msgstr "Tên khoa"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,help:health_insurance_claim.field_hic_hospital_bed__department_id
+msgid "Department where this bed is located"
+msgstr "Khoa nơi giường này được đặt"
+
+#. module: health_insurance_claim
+#: model:ir.ui.menu,name:health_insurance_claim.menu_department
+msgid "Departments"
+msgstr "Các khoa"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_hospital_bed__display_name
+msgid "Display Name"
+msgstr "Tên hiển thị"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,help:health_insurance_claim.field_hic_hospital_bed__name
+msgid "Display name of the hospital bed"
+msgstr "Tên hiển thị của giường bệnh viện"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_create_form
+msgid "Enter BHYT bed name..."
+msgstr "Nhập tên giường BHYT..."
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_bhyt_create_form
+msgid "Enter BHYT department name..."
+msgstr "Nhập tên khoa BHYT..."
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_bhyt_search
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_search
+msgid "Group By"
+msgstr "Nhóm theo"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields.selection,name:health_insurance_claim.selection__hic_hospital_bed__bed_type__his
+msgid "HIS Bed"
+msgstr "Giường HIS"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_his_list
+msgid "HIS Bed Name"
+msgstr "Tên giường HIS"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_create_form
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_list
+msgid "HIS Beds"
+msgstr "Giường HIS"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_his_list
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_his_search
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_his_list
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_his_search
+msgid "HIS Code"
+msgstr "Mã HIS"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_his_list
+msgid "HIS Department Name"
+msgstr "Tên khoa HIS"
+
+#. module: health_insurance_claim
+#: model:ir.actions.act_window,name:health_insurance_claim.action_department_his
+#: model:ir.ui.menu,name:health_insurance_claim.menu_department_his
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_bhyt_create_form
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_bhyt_list
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_bhyt_search
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_his_list
+msgid "HIS Departments"
+msgstr "Khoa HIS"
+
+#. module: health_insurance_claim
+#: model:ir.actions.act_window,name:health_insurance_claim.action_hospital_bed_his
+#: model:ir.ui.menu,name:health_insurance_claim.menu_hospital_bed_his
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_his_list
+msgid "HIS Hospital Beds"
+msgstr "Giường bệnh viện HIS"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,help:health_insurance_claim.field_hic_hospital_bed__his_bed_ids
+msgid "HIS beds that are mapped to this BHYT bed"
+msgstr "Giường HIS được ánh xạ với giường BHYT này"
+
+#. module: health_insurance_claim
+#: model:ir.model,name:health_insurance_claim.model_hic_hospital_bed
+msgid "Hospital Bed"
+msgstr "Giường bệnh viện"
+
+#. module: health_insurance_claim
+#: model:ir.ui.menu,name:health_insurance_claim.menu_hospital_bed
+msgid "Hospital Beds"
+msgstr "Giường bệnh viện"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_hospital_bed__id
+msgid "ID"
+msgstr "ID"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields.selection,name:health_insurance_claim.selection__hr_department__department_source__bhyt
+msgid "Khoa BHYT"
+msgstr "Khoa BHYT"
+
+#. module: health_insurance_claim
+#: model:hr.department,name:health_insurance_claim.his_dept_chan_doan
+msgid "Khoa Chẩn đoán hình ảnh"
+msgstr "Khoa Chẩn đoán hình ảnh"
+
+#. module: health_insurance_claim
+#: model:hr.department,name:health_insurance_claim.his_dept_cap_cuu
+msgid "Khoa Cấp cứu"
+msgstr "Khoa Cấp cứu"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields.selection,name:health_insurance_claim.selection__hr_department__department_source__his
+msgid "Khoa HIS"
+msgstr "Khoa HIS"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hr_department__his_department_ids
+msgid "Khoa HIS tương ứng"
+msgstr "Khoa HIS tương ứng"
+
+#. module: health_insurance_claim
+#: model:hr.department,name:health_insurance_claim.his_dept_ngoai
+msgid "Khoa Ngoại tổng hợp"
+msgstr "Khoa Ngoại tổng hợp"
+
+#. module: health_insurance_claim
+#: model:hr.department,name:health_insurance_claim.his_dept_nhi
+msgid "Khoa Nhi"
+msgstr "Khoa Nhi"
+
+#. module: health_insurance_claim
+#: model:hr.department,name:health_insurance_claim.his_dept_noi
+msgid "Khoa Nội tổng hợp"
+msgstr "Khoa Nội tổng hợp"
+
+#. module: health_insurance_claim
+#: model:hr.department,name:health_insurance_claim.his_dept_san
+msgid "Khoa Sản"
+msgstr "Khoa Sản"
+
+#. module: health_insurance_claim
+#: model:hr.department,name:health_insurance_claim.his_dept_xet_nghiem
+msgid "Khoa Xét nghiệm"
+msgstr "Khoa Xét nghiệm"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hr_department__department_source
+msgid "Loại khoa"
+msgstr "Loại khoa"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_hospital_bed__his_bed_ids
+msgid "Mapped HIS Beds"
+msgstr "Giường HIS được ánh xạ"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hr_department__his_code
+msgid "Mã HIS"
+msgstr "Mã HIS"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hr_department__bhyt_code
+msgid "Mã khoa BHYT"
+msgstr "Mã khoa BHYT"
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/department.py:0
+msgid "Mã khoa BHYT '%s' đã tồn tại!"
+msgstr "Mã khoa BHYT '%s' đã tồn tại!"
+
+#. module: health_insurance_claim
+#: model:ir.model.constraint,message:health_insurance_claim.constraint_hr_department_his_code_uniq
+msgid "Mã khoa HIS phải duy nhất!"
+msgstr "Mã khoa HIS phải duy nhất!"
+
+#. module: health_insurance_claim
+#: model_terms:ir.actions.act_window,help:health_insurance_claim.action_department_bhyt
+msgid "No BHYT departments yet!"
+msgstr "Chưa có khoa BHYT nào!"
+
+#. module: health_insurance_claim
+#: model_terms:ir.actions.act_window,help:health_insurance_claim.action_hospital_bed_bhyt
+msgid "No BHYT hospital beds yet!"
+msgstr "Chưa có giường bệnh viện BHYT nào!"
+
+#. module: health_insurance_claim
+#: model_terms:ir.actions.act_window,help:health_insurance_claim.action_department_his
+msgid "No HIS department data yet!"
+msgstr "Chưa có dữ liệu khoa HIS nào!"
+
+#. module: health_insurance_claim
+#: model_terms:ir.actions.act_window,help:health_insurance_claim.action_hospital_bed_his
+msgid "No HIS hospital bed data yet!"
+msgstr "Chưa có dữ liệu giường bệnh viện HIS nào!"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_hospital_bed__price
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_create_form
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_list
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_search
+msgid "Price"
+msgstr "Giá"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,help:health_insurance_claim.field_hic_hospital_bed__price
+msgid "Price per day for using this bed"
+msgstr "Giá mỗi ngày sử dụng giường này"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_search
+msgid "Search BHYT Beds"
+msgstr "Tìm kiếm giường BHYT"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_bhyt_search
+msgid "Search BHYT Departments"
+msgstr "Tìm kiếm khoa BHYT"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_his_search
+msgid "Search HIS Beds"
+msgstr "Tìm kiếm giường HIS"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_his_search
+msgid "Search HIS Departments"
+msgstr "Tìm kiếm khoa HIS"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_bhyt_search
+msgid "Status"
+msgstr "Trạng thái"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hic_hospital_bed__bed_type
+msgid "Type"
+msgstr "Loại"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,field_description:health_insurance_claim.field_hr_department__bhyt_name
+msgid "Tên khoa BHYT"
+msgstr "Tên khoa BHYT"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,help:health_insurance_claim.field_hic_hospital_bed__code
+msgid "Unique code for the hospital bed"
+msgstr "Mã duy nhất cho giường bệnh viện"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_hospital_bed_bhyt_create_form
+msgid "e.g: GB001"
+msgstr "ví dụ: GB001"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_department_bhyt_create_form
+msgid "e.g: K001"
+msgstr "ví dụ: K001"
+
+#. module: health_insurance_claim
+#: model:ir.actions.act_window,name:health_insurance_claim.action_medical_staff_bhyt
+#: model:ir.ui.menu,name:health_insurance_claim.menu_medical_staff_bhyt
+msgid "BHYT Medical Staff"
+msgstr "Nhân viên y tế BHYT"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_medical_staff_search
+msgid "BHYT Staff"
+msgstr "Nhân viên BHYT"
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/department.py:0
+msgid "BHYT department code '%s' already exists!"
+msgstr "Mã khoa BHYT '%s' đã tồn tại!"
+
+#. module: health_insurance_claim
+#: model:ir.model.constraint,message:health_insurance_claim.constraint_hr_department_bhyt_code_uniq
+msgid "BHYT department code must be unique!"
+msgstr "Mã khoa BHYT phải là duy nhất!"
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/medical_staff.py:0
+msgid "Code is required for Health Insurance Medical Staff!"
+msgstr "Mã là bắt buộc cho Nhân viên Y tế Bảo hiểm!"
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/medical_staff.py:0
+msgid "Department Code is required for Health Insurance Medical Staff!"
+msgstr "Mã khoa là bắt buộc cho Nhân viên Y tế Bảo hiểm!"
+
+#. module: health_insurance_claim
+#: model:ir.actions.act_window,name:health_insurance_claim.action_medical_staff_his
+#: model:ir.ui.menu,name:health_insurance_claim.menu_medical_staff_his
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_medical_staff_his_list
+msgid "HIS Medical Staff"
+msgstr "Nhân viên y tế HIS"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_medical_staff_search
+msgid "HIS Staff"
+msgstr "Nhân viên HIS"
+
+#. module: health_insurance_claim
+#. odoo-python
+#: code:addons/health_insurance_claim/models/medical_staff.py:0
+msgid "HIS Staff Code is required for Health Insurance Medical Staff!"
+msgstr "Mã nhân viên HIS là bắt buộc cho Nhân viên Y tế Bảo hiểm!"
+
+#. module: health_insurance_claim
+#: model:ir.model.constraint,message:health_insurance_claim.constraint_hic_medical_staff_his_staff_code_unique
+msgid "HIS Staff Code must be unique!"
+msgstr "Mã nhân viên HIS phải là duy nhất!"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_medical_staff_list
+msgid "Medical Staff List"
+msgstr "Danh sách nhân viên y tế"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields.selection,name:health_insurance_claim.selection__hic_medical_staff__staff_type__bhyt
+msgid "Medical Staff for Health Insurance"
+msgstr "Nhân viên y tế cho Bảo hiểm Y tế"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields.selection,name:health_insurance_claim.selection__hic_medical_staff__staff_type__his
+msgid "Medical Staff from HIS"
+msgstr "Nhân viên y tế từ HIS"
+
+#. module: health_insurance_claim
+#: model:ir.model.constraint,message:health_insurance_claim.constraint_hic_medical_facility_code_unique
+msgid "Medical facility code must be unique!"
+msgstr "Mã cơ sở y tế phải là duy nhất!"
+
+#. module: health_insurance_claim
+#: model:ir.model.fields,help:health_insurance_claim.field_hic_medical_facility__code
+msgid "Medical facility identification code"
+msgstr "Mã định danh cơ sở y tế"
+
+#. module: health_insurance_claim
+#: model_terms:ir.ui.view,arch_db:health_insurance_claim.view_medical_facility_form
+msgid "Medical facility name..."
+msgstr "Tên cơ sở y tế..."
+
+#. module: health_insurance_claim
+#: model_terms:ir.actions.act_window,help:health_insurance_claim.action_medical_staff_his
+msgid "No HIS Medical staff data yet!"
+msgstr "Chưa có dữ liệu nhân viên y tế HIS!"
+
+#. module: health_insurance_claim
+#: code:addons/health_insurance_claim/models/category.py:0
+msgid "%(name)s has been created."
+msgstr "%(name)s đã được tạo."
+
+#. module: health_insurance_claim
+#: code:addons/health_insurance_claim/models/category.py:0
+msgid "KCB object code must not exceed 4 characters and must contain only numbers and special characters (no letters and number '0')!"
+msgstr "Mã đối tượng KCB không được vượt quá 4 ký tự và chỉ được chứa số và ký tự đặc biệt (không chữ cái và số '0')!"

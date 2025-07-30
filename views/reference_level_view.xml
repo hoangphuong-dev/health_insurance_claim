@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_reference_level_form" model="ir.ui.view">
+        <field name="name">hic.reference.level.form</field>
+        <field name="model">hic.reference.level</field>
+        <field name="arch" type="xml">
+            <form string="Reference Level">
+                <sheet>
+                    <field name="check_edit" invisible="1" />
+                    <group>
+                        <group>
+                            <field name="reference_code" readonly="1" />
+                            <field
+                                name="start_date"
+                                required="1"
+                                readonly="check_edit"
+                            />
+                        </group>
+                        <group>
+                            <field
+                                name="level_number"
+                                required="1"
+                                readonly="check_edit"
+                            />
+                            <field name="end_date" required="1" readonly="check_edit" />
+                        </group>
+                    </group>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <!-- List View -->
+    <record id="view_reference_level_list" model="ir.ui.view">
+        <field name="name">hic.reference.level.list</field>
+        <field name="model">hic.reference.level</field>
+        <field name="arch" type="xml">
+            <list string="Reference Level List">
+                <field name="reference_code" width="25%" />
+                <field name="level_number" width="25%" />
+                <field name="start_date" width="25%" />
+                <field name="end_date" width="25%" />
+                <field name="create_uid" width="25%" />
+            </list>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_reference_level_search" model="ir.ui.view">
+        <field name="name">hic.reference.level.search</field>
+        <field name="model">hic.reference.level</field>
+        <field name="arch" type="xml">
+            <search string="Search Reference Level">
+                <field name="level_number" />
+                <field name="start_date" />
+                <field name="end_date" />
+                <separator />
+                <filter
+                    string="Current Reference Level"
+                    name="current"
+                    domain="[('start_date', '&lt;=', context_today()), ('end_date', '&gt;=', context_today())]"
+                />
+                <filter
+                    string="Expired Reference Level"
+                    name="expired"
+                    domain="[('end_date', '&lt;', context_today())]"
+                />
+                <filter
+                    string="Upcoming Reference Level"
+                    name="upcoming"
+                    domain="[('start_date', '&gt;', context_today())]"
+                />
+                <group expand="0" string="Group By">
+                    <filter
+                        string="Start Month"
+                        name="group_start_month"
+                        context="{'group_by': 'start_date:month'}"
+                    />
+                    <filter
+                        string="End Month"
+                        name="group_end_month"
+                        context="{'group_by': 'end_date:month'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_reference_level" model="ir.actions.act_window">
+        <field name="name">Reference Level</field>
+        <field name="res_model">hic.reference.level</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first reference level
+            </p>
+            <p>
+                Reference levels are used to define different levels in the health insurance system
+                with specific application periods.
+            </p>
+        </field>
+    </record>
+</odoo>

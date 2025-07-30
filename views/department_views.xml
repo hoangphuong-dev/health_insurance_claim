@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Search view for BHYT departments -->
+    <record id="view_department_bhyt_search" model="ir.ui.view">
+        <field name="name">hr.department.bhyt.search</field>
+        <field name="model">hr.department</field>
+        <field name="arch" type="xml">
+            <search string="Search BHYT Departments">
+                <field name="bhyt_code" string="BHYT Code" />
+                <field name="bhyt_name" string="Department Name" />
+                <field name="his_department_ids" string="HIS Departments" />
+
+                <group expand="0" string="Group By">
+                    <filter
+                        string="Status"
+                        name="group_active"
+                        context="{'group_by': 'active'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Search view for HIS departments -->
+    <record id="view_department_his_search" model="ir.ui.view">
+        <field name="name">hr.department.his.search</field>
+        <field name="model">hr.department</field>
+        <field name="arch" type="xml">
+            <search string="Search HIS Departments">
+                <field name="his_code" string="HIS Code" />
+                <field name="name" string="Department Name" />
+            </search>
+        </field>
+    </record>
+
+    <!-- Form to create new BHYT department -->
+    <record id="view_department_bhyt_create_form" model="ir.ui.view">
+        <field name="name">hr.department.bhyt.create.form</field>
+        <field name="model">hr.department</field>
+        <field name="arch" type="xml">
+            <form string="Create New BHYT Department">
+                <sheet>
+                    <group>
+                        <group>
+                            <field
+                                name="name"
+                                placeholder="Enter BHYT department name..."
+                                required="1"
+                            />
+                            <field
+                                name="bhyt_code"
+                                placeholder="e.g: K001"
+                                required="1"
+                            />
+                            <field name="department_source" invisible="1" />
+                            <field name="patient_department" invisible="1" />
+                        </group>
+                    </group>
+
+                    <group>
+                        <group>
+                            <field
+                                name="his_department_ids"
+                                string="HIS Departments"
+                                widget="many2many_tags"
+                                options="{'no_create': True}"
+                                context="{'tree_view_ref': 'health_insurance_claim.view_department_his_list'}"
+                                domain="[('department_source', '=', 'his')]"
+                            >
+                                <list>
+                                    <field name="his_code" />
+                                    <field name="name" />
+                                    <field name="active" />
+                                </list>
+                            </field>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_create_bhyt_department_form" model="ir.actions.act_window">
+        <field name="name">Create New BHYT Department</field>
+        <field name="res_model">hr.department</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_department_bhyt_create_form" />
+        <field name="target">current</field>
+        <field name="context">{
+            'create_bhyt_department': True,
+            'default_department_source': 'bhyt',
+            'default_patient_department': True
+        }</field>
+    </record>
+
+    <!-- List view for BHYT departments -->
+    <record id="view_department_bhyt_list" model="ir.ui.view">
+        <field name="name">hr.department.bhyt.list</field>
+        <field name="model">hr.department</field>
+        <field name="arch" type="xml">
+            <list string="BHYT Departments">
+                <field name="bhyt_code" string="BHYT Code" />
+                <field name="bhyt_name" string="BHYT Department Name" />
+                <field
+                    name="his_department_ids"
+                    string="HIS Departments"
+                    widget="many2many_tags"
+                />
+            </list>
+        </field>
+    </record>
+
+    <!-- List view for HIS departments -->
+    <record id="view_department_his_list" model="ir.ui.view">
+        <field name="name">hr.department.his.list</field>
+        <field name="model">hr.department</field>
+        <field name="arch" type="xml">
+            <list
+                string="HIS Departments"
+                create="false"
+                edit="false"
+                delete="false"
+                sample="1"
+            >
+                <field name="his_code" string="HIS Code" />
+                <field name="name" string="HIS Department Name" />
+            </list>
+        </field>
+    </record>
+
+    <!-- Actions for list views -->
+    <record id="action_department_bhyt" model="ir.actions.act_window">
+        <field name="name">BHYT Departments</field>
+        <field name="res_model">hr.department</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_department_bhyt_list" />
+        <field name="search_view_id" ref="view_department_bhyt_search" />
+        <field name="domain">[('department_source', '=', 'bhyt')]</field>
+        <field name="context">{
+            'default_department_source': 'bhyt',
+        }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No BHYT departments yet!
+            </p>
+        </field>
+    </record>
+
+    <record id="action_department_his" model="ir.actions.act_window">
+        <field name="name">HIS Departments</field>
+        <field name="res_model">hr.department</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_department_his_list" />
+        <field name="search_view_id" ref="view_department_his_search" />
+        <field
+            name="domain"
+        >[('department_source', '=', 'his'), ('his_code', '!=', False)]</field>
+        <field name="context">{
+            'create': False,
+            'edit': False,
+            'delete': False
+        }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No HIS department data yet!
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- KCB Object Code Form View -->
+    <record id="view_kcb_object_form" model="ir.ui.view">
+        <field name="name">hic.category.kcb.form</field>
+        <field name="model">hic.category</field>
+        <field name="arch" type="xml">
+            <form string="KCB Object Code">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code" string="KCB Object Code" />
+                        </group>
+                        <group>
+                            <field name="name" string="KCB Object Name" />
+                            <field name="active" invisible="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <!-- KCB Object Code List View -->
+    <record id="view_kcb_object_list" model="ir.ui.view">
+        <field name="name">hic.category.kcb.list</field>
+        <field name="model">hic.category</field>
+        <field name="arch" type="xml">
+            <list string="KCB Object Code List">
+                <field name="code" string="KCB Object Code" width="20%" />
+                <field name="name" string="KCB Object Name" width="60%" />
+                <field name="create_uid" width="20%" />
+            </list>
+        </field>
+    </record>
+
+    <!-- KCB Object Code Search View -->
+    <record id="view_kcb_object_search" model="ir.ui.view">
+        <field name="name">hic.category.kcb.search</field>
+        <field name="model">hic.category</field>
+        <field name="arch" type="xml">
+            <search string="Search KCB Object Code">
+                <field name="code" string="KCB Object Code" />
+                <field name="name" string="KCB Object Name" />
+                <separator />
+                <filter
+                    string="Archived"
+                    name="inactive"
+                    domain="[('active', '=', False)]"
+                />
+            </search>
+        </field>
+    </record>
+
+    <!-- KCB Object Code Action -->
+    <record id="action_kcb_object_code" model="ir.actions.act_window">
+        <field name="name">KCB Object Code</field>
+        <field name="res_model">hic.category</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_kcb_object_list" />
+        <field name="context">{
+            'default_category_type': 'kcb_object_code',
+            'form_view_ref': 'health_insurance_claim.view_kcb_object_form'
+        }</field>
+        <field name="domain">[('category_type', '=', 'kcb_object_code')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first KCB object code!
+            </p>
+            <p>
+                Define KCB object codes and their corresponding names.
+            </p>
+        </field>
+    </record>
+</odoo>
